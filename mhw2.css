@@ -174,10 +174,11 @@ section{
     cursor: pointer;
     margin: auto;
 }
-.container1  p:hover{
+.container1  p.vista1:hover{
     color: red;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 15px;
+    text-align: center;
 }
 
 .container{
@@ -230,10 +231,11 @@ section{
     align-items: center;
     margin-left: auto;
 }
-.griglia p:hover{
+.griglia p.vista:hover{
     color: red;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 15px;
+    text-align: center;
 }
 .hidden2{
     display: none;
