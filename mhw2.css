@@ -110,31 +110,42 @@ section{
 
 .griglia2{
     display: flex;
-    flex-wrap: wrap;
-    width: var(--square-size);
+    flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(219, 219, 219);
+    padding: 15px;
+    margin: 10px 12px;
+    flex-wrap: wrap;
     align-items: center;
-    text-align: center;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    width: min-content;
+    background-color: rgb(219, 219, 219);
+}
+.griglia2 span{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+}
+
+.vista1{
+    margin-top: 3px;
+    font-size: 18px;
+    margin: auto;
+    cursor: pointer;
 }
 
 .container1{
-    align-content: space-between;
-    background-color: rgb(230, 230, 230);
     display: flex;
     flex-wrap: wrap;
-    width: var(--grid-size);
-    justify-content: space-between;
-    margin-bottom: 130px;
+    align-content: space-between;
+    background-color: rgb(230, 230, 230);
+    margin-bottom: 250px;
 }
 
 .elementi{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
-
 
 .chirurgo{
     margin: auto;
@@ -148,6 +159,7 @@ section{
     height: 25px;
     margin-bottom: 5px;
     cursor: pointer;
+    margin-left: 35px;
 }
 .rimuovi:hover{
     width: 30px;
@@ -169,25 +181,23 @@ section{
 }
 
 .container{
-    align-content: space-between;
-    background-color: rgb(230, 230, 230);
     display: flex;
     flex-wrap: wrap;
-    height: var(--grid-size);
-    justify-content: space-between;
-    width: var(--grid-size);
+    align-content: space-between;
+    background-color: rgb(230, 230, 230);
     margin-bottom: 250px;
 }
 .griglia{
     display: flex;
-    flex-wrap: wrap;
-    width: var(--square-size);
+    flex-direction: column;
     justify-content: space-between;
-    background-color: rgb(219, 219, 219);
+    padding: 15px;
+    margin: 10px 12px;
+    flex-wrap: wrap;
     align-items: center;
-    text-align: center;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    width: min-content;
+    background-color: rgb(219, 219, 219);
+  
 }
 .griglia titolo{
     font-size: 15px;
@@ -198,11 +208,11 @@ section{
     height: 25px;
     margin-bottom: 5px;
     cursor: pointer;
+    margin-left: 35px;
 }
 .aggiungi:hover{
     width: 30px;
     height: 30px;
-
     margin-bottom: 5px;
 }
 
@@ -211,6 +221,14 @@ section{
     font-size: 18px;
     margin: auto;
     cursor: pointer;
+}
+
+.griglia span{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
 }
 .griglia p:hover{
     color: red;
@@ -268,60 +286,3 @@ address{
         display: block;
     }
 }
-
-/*
-.grid{
-    display: flex;
-    flex-wrap: wrap;
-    width: var(--grid-size);
-    height: var(--grid-size);
-}
-
-section.grid div{
-    width: var(--square-size);
-    height: var(--square-size);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-section.grid div img{
-    width: 50%;
-}
-
-.hidden{
-    display: flex;
-    flex-wrap: wrap;
-    width: var(--grid-size);
-    height: var(--grid-size);
-    display: none;
-}
-
-section.hidden div{
-    width: var(--square-size);
-    height: var(--square-size);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-section.hidden div img{
-    width: 50%;
-}
-
-footer{
-    margin-top: 30px;
-    background-color: black;
-    color: white;
-    padding: 40px;
-}
-
-
-address{
-    text-transform: uppercase;
-    text-align: center;
-}
-
-*/

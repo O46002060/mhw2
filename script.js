@@ -9,14 +9,15 @@ function mostra(event) {
 		testo.textContent = 'Clicca per dettagli';
 	}
 
-	const detail = document.querySelectorAll('.hidden2');
+	const ele = document.querySelectorAll('.hidden2');
 	
-	for (const det of detail){
-		if (det.id === testo.parentNode.id){
-			det.classList.remove('hidden2');
-			det.classList.add('mostra');
+	for (const el of ele){
+		if (el.id === testo.parentNode.id){
+			el.classList.remove('hidden2');
+			el.classList.add('mostra');
 		}
 	}
+  
 	event.currentTarget.addEventListener('click', togli);
 	event.currentTarget.removeEventListener('click', mostra);
 }
@@ -30,74 +31,29 @@ function togli(event) {
 		testo.textContent = 'Clicca per dettagli';
 	}
 
-	const detail = document.querySelectorAll('.mostra');
+	const elem = document.querySelectorAll('.mostra');
 	
-	for (const det of detail){
-		if (det.id === testo.parentNode.id){
-			det.classList.remove('mostra');
-			det.classList.add('hidden2');
+	for (const e of elem){
+		if (e.id === testo.parentNode.id){
+			e.classList.remove('mostra');
+			e.classList.add('hidden2');
 		}
 	}
 	event.currentTarget.addEventListener('click', mostra);
 	event.currentTarget.removeEventListener('click', togli);
 }
 
-function mostra1(event) {
-	const testo = event.currentTarget;
-	
-	if (testo.textContent === 'Clicca per dettagli'){
-		testo.textContent = 'Nascondi Dettagli';
-	} else {
-		testo.textContent = 'Clicca per dettagli';
-	}
-
-	const detail = document.querySelectorAll('.hidden2');
-	
-	for (const det of detail){
-		if (det.id === testo.parentNode.id){
-			det.classList.remove('hidden2');
-			det.classList.add('mostra');
-		}
-	}
-	event.currentTarget.addEventListener('click', togli1);
-	event.currentTarget.removeEventListener('click', mostra1);
-  
-}
-
-function togli1(event) {
-
-	const testo = event.currentTarget;
-	
-	if (testo.textContent === 'Clicca per dettagli'){
-		testo.textContent = 'Nascondi Dettagli';
-	} else {
-		testo.textContent = 'Clicca per dettagli';
-	}
-
-	const detail = document.querySelectorAll('.mostra');
-	
-	
-	for (const det of detail){
-		if (det.id === testo.parentNode.id){
-			det.classList.remove('mostra');
-			det.classList.add('hidden2');
-		}
-	}
-	event.currentTarget.addEventListener('click', mostra1);
-	event.currentTarget.removeEventListener('click', togli1);
-}
-
 function aggiungi(event){
 	const element = event.currentTarget;
 
-	const id = document.getElementById(element.parentNode.id);
+	const id = document.getElementById(element.parentNode.parentNode.id);
 
 	const a = document.querySelector('.hidden1');
 	if (a.className === 'hidden1'){
 		a.id = 'id';
 	}
 	id.classList.remove('hidden');
-	id.classList.add('griglia2');
+	id.classList.add('griglia');
 	
 	element.removeEventListener('click', aggiungi);
 	element.addEventListener('click', aggiungi);
@@ -107,13 +63,13 @@ function aggiungi(event){
 function rimuovi(event){ 
   const element = event.currentTarget;
 	
-	const id = document.getElementById(element.parentNode.id);
+	const id = document.getElementById(element.parentNode.parentNode.id);
 	
 	const a = document.querySelector('.hidden1');
 	if (a.className === 'hidden1'){
 		a.id = 'id';
 	}
-    id.classList.remove('griglia2');
+    id.classList.remove('griglia');
     id.classList.add('hidden');
 
     //rimozione 
@@ -127,6 +83,7 @@ function rimuovi(event){
    if(i=== controlli.length){
       a.removeAttribute('id');
     }
+
     }
 
 
@@ -138,10 +95,10 @@ function rimuovi(event){
 
 function ricerca(event){
   const input = document.querySelector('input').value.toUpperCase();
-  const content = document.querySelectorAll('strong')
+  const cont = document.querySelectorAll('.container span')
 
-  for(const c of content){
-    const t = c.innerText.toUpperCase();
+  for(const c of cont){
+    const t = c.textContent.toUpperCase();
     for(let i=0; i<t.length; i++){
       if(t.includes(input)){
         
@@ -171,9 +128,16 @@ const div1 = document.createElement("div");
   sect1.className = 'container1';
   div1.appendChild(sect1);
   
+
+ // sezione nascosta
+
   for (let i = 0; i < contents.length; i++) {
-    const newT3 = document.createElement("strong");
-    newT3.textContent = contents[i].chirurgo;
+    const div3 = document.createElement("div");
+    div3.className = 'hidden';
+    div3.id =  i;
+    const spa1 = document.createElement('span');
+    div3.appendChild(spa1);
+    spa1.textContent = contents[i].chirurgo;
     const rem = document.createElement("img");
     rem.className = 'rimuovi';
     rem.src = 'rimuovi.png';
@@ -182,23 +146,14 @@ const div1 = document.createElement("div");
     const newIm = document.createElement("img");
     newIm.className = 'chirurgo'; 
     newIm.src = contents[i].immagine;
-    const div3 = document.createElement("div");
-    div3.className = 'hidden';
-    div3.id =  i;
-    div3.appendChild(newT3);
-    div3.appendChild(rem);
+    spa1.appendChild(rem);
     div3.appendChild(newIm);
     const currentDiv3 = document.getElementById("p");
     document.body.insertBefore(div3, currentDiv3);
     const t41 = document.createElement('p');
-    t41.addEventListener('click', mostra1);
+    t41.addEventListener('click', mostra);
     t41.textContent = 'Clicca per dettagli';
-    t41.className = 'vista';
-    t41.id = i;
-    const t42 = document.createElement('p2');
-    t42.textContent = 'Meno dettagli';
-    t42.addEventListener('click', togli1);
-    t42.className = 'hidden2';
+    t41.className = 'vista1';
     t41.id = i;
     const t43 = document.createElement('p1');
     t43.textContent = contents[i].mail;
@@ -211,10 +166,11 @@ const div1 = document.createElement("div");
     sect1.appendChild(div3);
     div3.appendChild(t41);
     div3.appendChild(t43);
-    div3.appendChild(t42);
     div3.appendChild(t44);
   }
 
+
+   //section contenitore principale
   const sect = document.createElement('section');
   sect.className = 'container';
   sect.id='main'
@@ -222,8 +178,12 @@ const div1 = document.createElement("div");
   document.body.insertBefore(sect, currentDiv2);
 
   for (let i = 0; i < contents.length; i++) {
-    const newT2 = document.createElement("strong");
-    newT2.textContent = contents[i].chirurgo;
+    const div3 = document.createElement("div");
+    div3.className = 'griglia';
+    div3.id = i;
+    const spa = document.createElement('span');
+    div3.appendChild(spa);
+    spa.textContent = contents[i].chirurgo;
     const add = document.createElement("img");
     add.className = 'aggiungi';
     add.src = 'aggiungi.png';
@@ -232,11 +192,8 @@ const div1 = document.createElement("div");
     const newIm = document.createElement("img");
     newIm.className = 'chirurgo'; 
     newIm.src = contents[i].immagine;
-    const div3 = document.createElement("div");
-    div3.className = 'griglia';
-    div3.id = i;
-    div3.appendChild(newT2);
-    div3.appendChild(add);
+    
+    spa.appendChild(add);
     div3.appendChild(newIm);
     const currentDiv3 = document.getElementById("p");
     document.body.insertBefore(div3, currentDiv3);
@@ -258,6 +215,11 @@ const div1 = document.createElement("div");
     div3.appendChild(t2);
     div3.appendChild(t3);
   }
+
+
+
+
+    //footer
 
   const footer = document.createElement('footer');
   const currentDiv4 = document.getElementById("section");
